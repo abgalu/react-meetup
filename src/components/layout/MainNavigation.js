@@ -1,9 +1,35 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 
 export default function MainNavigation() {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className={classes.header} data-test="navigation-header">
+    <header
+      className={`${classes.header} ${
+        isVisible ? classes.visible : classes.hidden
+      }`}
+      data-test="navigation-header"
+    >
       <div className={classes.logo}>React Meetups</div>
       <nav>
         <ul>
