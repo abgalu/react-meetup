@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { PATHS } from "../../utils/constants";
 import classes from "./MainNavigation.module.css";
 
-export default function MainNavigation() {
+export default function MainNavigation({ favorites }) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -34,15 +35,15 @@ export default function MainNavigation() {
       <nav>
         <ul>
           <li>
-            <Link to="/">All Meetups</Link>
+            <Link to={PATHS.ALL_MEETUPS}>All Meetups</Link>
           </li>
           <li>
-            <Link to="/new-meetup">Add New Meetup</Link>
+            <Link to={PATHS.NEW_MEETUP}>Add New Meetup</Link>
           </li>
           <li>
-            <Link to="/favorites">
+            <Link to={PATHS.FAVORITES}>
               My Favorites
-              <span className={classes.badge}>{0}</span>
+              <span className={classes.badge}>{favorites.length}</span>
             </Link>
           </li>
         </ul>

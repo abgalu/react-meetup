@@ -1,5 +1,7 @@
-const ALL_MEETUP_PAGE = 1;
-const FAVORITES_PAGE = 2;
-const NEW_MEETUP_PAGE = 3;
+const PATHS = {
+  ALL_MEETUPS: "/",
+  FAVORITES: "/favorites",
+  NEW_MEETUP: "/new-meetup",
+};
 
-export { ALL_MEETUP_PAGE, FAVORITES_PAGE, NEW_MEETUP_PAGE };
+export { PATHS };
