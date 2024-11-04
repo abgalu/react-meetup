@@ -39,6 +39,15 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Improvements
+
+This project has been enhanced with additional features to improve functionality and user experience:
+
+1. **React Router Integration**: Added `react-router-dom` for seamless navigation between different views in the app.
+2. **Header Animation on Scroll**: Implemented a smooth animation on the header that activates when the user scrolls, enhancing the visual experience.
+3. **Favorites Feature**: Enabled a favorites feature, allowing users to mark and easily access selected items within the application.
+4. **Testing**: Added tests to ensure code stability and functionality, maintaining reliability across updates.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
