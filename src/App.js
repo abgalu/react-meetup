@@ -12,10 +12,15 @@ import NewMeetupsPage from "./pages/NewMeetup";
 import Layout from "./components/layout/Layout";
 import MainNavigation from "./components/layout/MainNavigation";
 
+import { useData } from "./util-hooks/useData";
 import { useFavorites } from "./util-hooks/useFavorites";
 import { PATHS } from "./utils/constants";
 
 function App() {
+  const { data, addMeetup } = useData({
+    url: "/data.json",
+  });
+
   const { favorites, addFavorite, removeFavorite, checkIsFavorite } =
     useFavorites();
 
@@ -28,6 +33,7 @@ function App() {
             path={PATHS.ALL_MEETUPS}
             element={
               <AllMeetupsPage
+                data={data}
                 addFavorite={addFavorite}
                 removeFavorite={removeFavorite}
                 checkIsFavorite={checkIsFavorite}
@@ -43,8 +49,14 @@ function App() {
               />
             }
           />
-          <Route path={PATHS.NEW_MEETUP} element={<NewMeetupsPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route
+            path={PATHS.NEW_MEETUP}
+            element={<NewMeetupsPage addMeetup={addMeetup} />}
+          />
+          <Route
+            path="*"
+            element={<Navigate to={PATHS.ALL_MEETUPS} replace />}
+          />
         </Routes>
       </Layout>
     </Router>
